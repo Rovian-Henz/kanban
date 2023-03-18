@@ -12,6 +12,9 @@ function Task({ task, index }) {
     const handleOpenDetailTask = () => {
         setIsModalOpen(true);
     };
+
+    console.log("task task", task);
+
     return (
         <>
             <Draggable draggableId={task.id} index={index}>

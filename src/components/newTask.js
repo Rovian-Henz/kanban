@@ -1,5 +1,5 @@
 import { useState } from "react";
-import uuid from "react-uuid";
+// import uuid from "react-uuid";
 import GeneralButton from "./generalButton";
 
 function NewTask({ handleNewTask, columnClicked }) {
@@ -15,7 +15,7 @@ function NewTask({ handleNewTask, columnClicked }) {
     };
 
     const handleSaveName = () => {
-        const taskId = uuid();
+        const taskId = createRandomId();
         const newTask = {
             id: taskId,
             title: nameValue,
@@ -23,6 +23,17 @@ function NewTask({ handleNewTask, columnClicked }) {
         };
 
         handleNewTask(newTask, columnClicked);
+    };
+
+    const createRandomId = () => {
+        let a = new Uint32Array(3);
+        window.crypto.getRandomValues(a);
+        return (
+            performance.now().toString(36) +
+            Array.from(a)
+                .map((A) => A.toString(36))
+                .join("")
+        ).replace(/\./g, "");
     };
 
     return (

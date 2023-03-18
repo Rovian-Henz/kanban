@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import { Droppable } from "react-beautiful-dnd";
 import Task from "./task";
 import NewTask from "./newTask";
@@ -8,11 +8,17 @@ import "../styles/column.css";
 function Column({ column, tasks, addNewTask }) {
     const [isNewTask, setIsNewTask] = useState(false);
 
-    const TaskList = memo(function TaskList({ tasks }) {
-        return tasks.map((task, index) => (
-            <Task task={task} index={index} key={task.id} />
+    const TaskList = function TaskList({ tasks }) {
+        let taskList = tasks.map((task, index) => (
+            <>
+                {console.log("tasks", tasks)}
+                {tasks && task && (
+                    <Task task={task} index={index} key={task.id} />
+                )}
+            </>
         ));
-    });
+        return taskList;
+    };
 
     const handleAddBtn = () => {
         setIsNewTask(true);
