@@ -1,0 +1,9 @@
+.task {
+  border: 1px solid red;
+}
+.task > .title {
+  background-color: #ddd;
+}
+.task.isDragging {
+  background-color: blue;
+}/*# sourceMappingURL=task.css.map */

@@ -1,0 +1,9 @@
+.task {
+    border: 1px solid red;
+    > .title {
+        background-color: #ddd;
+    }
+    &.isDragging {
+        background-color: blue;
+    }
+}

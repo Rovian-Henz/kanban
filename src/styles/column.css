@@ -1,0 +1,23 @@
+.column {
+  border: 1px solid #000;
+  width: 33%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.column .columnContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-grow: 1;
+  transition: background-color 0.2s ease;
+  min-height: 100px;
+}
+.column > .title {
+  color: #000;
+  background-color: #999;
+}
+.column .isDraggingOver {
+  background-color: green;
+  flex-grow: 1;
+}/*# sourceMappingURL=column.css.map */
