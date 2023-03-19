@@ -1,9 +1,25 @@
 .task {
-  border: 1px solid red;
-}
-.task > .title {
-  background-color: #ddd;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 8px;
+  min-height: 20px;
+  position: relative;
+  z-index: 0;
 }
 .task.isDragging {
   background-color: blue;
+}
+.task .details {
+  overflow: hidden;
+  padding: 6px 8px;
+  position: relative;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
 }/*# sourceMappingURL=task.css.map */

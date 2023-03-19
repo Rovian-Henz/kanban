@@ -1,79 +1,33 @@
 import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { fetchItem, fetchData, saveData } from "./config/dbAccess";
 import Column from "./components/column";
 import "./App.css";
-
-const fetchAddress = "http://localhost:3004";
 
 function App() {
     const [tasks, setTasks] = useState();
     const [columns, setColumns] = useState();
     const [columnOrder, setColumnOrder] = useState();
 
+    async function getData(itemToFetch) {
+        const response = await fetchData(itemToFetch);
+        if (itemToFetch === "tasks") setTasks(response);
+        if (itemToFetch === "columns") setColumns(response);
+        if (itemToFetch === "columnOrder") setColumnOrder(response);
+    }
+
     useEffect(() => {
-        fetchData("tasks");
-        fetchData("columns");
-        fetchData("columnOrder");
+        getData("tasks");
+        getData("columns");
+        getData("columnOrder");
     }, []);
 
     const HandlefetchItem = () => {
         console.log(tasks);
         fetchItem("tasks", "3ofhlllln1iipk3am1fdz83i1w0s61r");
-        let content = {
-            id: "1",
-            title: "In Progress",
-            taskIds: [
-                "3pqbeeeeerd16t0dgs10f81ap5xul5a",
-                "3qp53llln1i350yj5hh03cnn1h4vvad",
-                "3q69assstir1mrtf38i8qryxpl1l3l2",
-            ],
-        };
-        saveData("columns", "1", content);
     };
 
-    const fetchItem = (itemToFetch, itemId) => {
-        const requestOptions = {
-            method: "GET",
-        };
-        fetch(`${fetchAddress}/${itemToFetch}/${itemId}`, requestOptions)
-            .then((res) => res.json())
-            .then((res) => console.log(res));
-    };
-
-    const fetchData = (itemToFetch) => {
-        const requestOptions = {
-            method: "GET",
-        };
-        fetch(`${fetchAddress}/${itemToFetch}`, requestOptions)
-            .then((res) => res.json())
-            .then((result) => {
-                if (itemToFetch === "tasks") setTasks(result);
-                if (itemToFetch === "columns") setColumns(result);
-                if (itemToFetch === "columnOrder") setColumnOrder(result);
-            })
-            .catch((err) => console.log("error"));
-    };
-
-    const saveData = (itemToFetch, content, method, id = null) => {
-        const requestOptions = {
-            method: method,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(content),
-        };
-        if (id) {
-            fetch(`${fetchAddress}/${itemToFetch}/${id}`, requestOptions)
-                .then(() => fetchData(itemToFetch))
-                .catch((err) => console.log("error"));
-        } else {
-            fetch(`${fetchAddress}/${itemToFetch}`, requestOptions)
-                .then(() => fetchData(itemToFetch))
-                .catch((err) => console.log("error"));
-        }
-    };
-
-    const onAddTask = (newTask, idColumn) => {
-        if (newTask.title.length < 1 || newTask.content.length < 1) return;
-
+    const onAddTask = async (newTask, idColumn) => {
         const startCol = columns[idColumn];
         const newTaskIds = Array.from(startCol.taskIds);
         newTaskIds.push(newTask.id);
@@ -82,6 +36,20 @@ function App() {
             ...startCol,
             taskIds: newTaskIds,
         };
+
+        const newColumns = {
+            ...columns,
+            [idColumn]: {
+                ...startCol,
+                taskIds: newTaskIds,
+            },
+        };
+
+        const newTasks = tasks;
+        newTasks.push(newTask);
+
+        setColumns(newColumns);
+        setTasks(newTasks);
 
         saveData("columns", newColumn, "PUT", idColumn);
         saveData("tasks", newTask, "POST");
@@ -115,7 +83,18 @@ function App() {
                 taskIds: newTaskIds,
             };
 
+            const newColumns = {
+                ...columns,
+                [destination.droppableId]: {
+                    ...startCol,
+                    taskIds: newTaskIds,
+                },
+            };
+
+            setColumns(newColumns);
+
             saveData("columns", newColumn, "PUT", startCol.id);
+
             return;
         }
 
@@ -134,6 +113,20 @@ function App() {
             ...finishCol,
             taskIds: finishTaskIds,
         };
+
+        const newColumns = {
+            ...columns,
+            [source.droppableId]: {
+                ...startCol,
+                taskIds: startTaskIds,
+            },
+            [destination.droppableId]: {
+                ...finishCol,
+                taskIds: finishTaskIds,
+            },
+        };
+
+        setColumns(newColumns);
 
         saveData("columns", newStart, "PUT", newStart.id);
         saveData("columns", newFinish, "PUT", finishCol.id);

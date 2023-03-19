@@ -9,11 +9,10 @@ function Task({ task, index }) {
     const handleOnConfirm = () => {
         setIsModalOpen(false);
     };
+
     const handleOpenDetailTask = () => {
         setIsModalOpen(true);
     };
-
-    console.log("task task", task);
 
     return (
         <>
@@ -29,18 +28,14 @@ function Task({ task, index }) {
                         isDragging={snapshot.isDragging}
                         onClick={handleOpenDetailTask}
                     >
-                        <div className="title">{task.title}</div>
-                        <div className="content">{task.content}</div>
+                        <div className="details">
+                            <div className="title">{task.title}</div>
+                            <div className="content">{task.content}</div>
+                        </div>
                     </div>
                 )}
             </Draggable>
-            {isModalOpen && (
-                <Modal
-                    title={task.title}
-                    content={task.content}
-                    onConfirm={handleOnConfirm}
-                />
-            )}
+            {isModalOpen && <Modal task={task} onConfirm={handleOnConfirm} />}
         </>
     );
 }

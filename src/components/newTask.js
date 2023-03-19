@@ -1,8 +1,10 @@
 import { useState } from "react";
-// import uuid from "react-uuid";
+import { createRandomId } from "../config/utils";
+import { Close, Save } from "../icons/icons";
 import GeneralButton from "./generalButton";
+import "../styles/newTask.css";
 
-function NewTask({ handleNewTask, columnClicked }) {
+function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
     const [nameValue, setNameValue] = useState("");
     const [contentValue, setContentValue] = useState("");
 
@@ -14,48 +16,53 @@ function NewTask({ handleNewTask, columnClicked }) {
         setContentValue(e.target.value);
     };
 
-    const handleSaveName = () => {
+    const handleSaveTask = () => {
+        if (nameValue.length < 1 || nameValue.length < 1) return;
+
         const taskId = createRandomId();
         const newTask = {
             id: taskId,
             title: nameValue,
             content: contentValue,
         };
-
         handleNewTask(newTask, columnClicked);
     };
 
-    const createRandomId = () => {
-        let a = new Uint32Array(3);
-        window.crypto.getRandomValues(a);
-        return (
-            performance.now().toString(36) +
-            Array.from(a)
-                .map((A) => A.toString(36))
-                .join("")
-        ).replace(/\./g, "");
-    };
-
     return (
-        <>
-            <input
-                type="text"
-                value={nameValue}
-                onChange={handleNameChange}
-                id="taskTitle"
-                name="taskTitle"
-                placeholder="Titulo Task"
-            />
-            <textarea
-                type="text"
-                value={contentValue}
-                onChange={handleContentChange}
-                id="taskContent"
-                name="taskContent"
-                placeholder="Descrição Task"
-            />
-            <GeneralButton handleClick={handleSaveName}> add</GeneralButton>
-        </>
+        <div className="addTaskContainer">
+            <div className="addTaskContent">
+                <input
+                    type="text"
+                    value={nameValue}
+                    onChange={handleNameChange}
+                    id="taskTitle"
+                    name="taskTitle"
+                    placeholder="Titulo Task"
+                />
+                <textarea
+                    type="text"
+                    value={contentValue}
+                    onChange={handleContentChange}
+                    id="taskContent"
+                    name="taskContent"
+                    placeholder="Descrição Task"
+                />
+            </div>
+            <div className="addNewTaskFooter">
+                <GeneralButton
+                    handleClick={handleSaveTask}
+                    specificClass="addTaskBtn"
+                >
+                    <Save />
+                </GeneralButton>
+                <GeneralButton
+                    handleClick={handleCancelTask}
+                    specificClass="addTaskBtn"
+                >
+                    <Close />
+                </GeneralButton>
+            </div>
+        </div>
     );
 }
 

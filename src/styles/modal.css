@@ -1,5 +1,5 @@
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
   position: fixed;
   left: 0;
   right: 0;
@@ -14,11 +14,77 @@
 .modal {
   min-height: 250px;
   width: 500px;
-  background: #fff;
+  background: #f4f5f7;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   z-index: 2;
+}
+.modal .header {
+  min-height: 32px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.modal .header .title {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  padding: 15px 25px;
+  font-weight: 600;
+  color: #172b4d;
+}
+.modal .info {
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.modal .content {
+  min-height: 32px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.modal .content .title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: 15px 25px;
+  display: inline-block;
+  margin: 0;
+  min-height: 18px;
+  min-width: 40px;
+  width: auto;
+  text-align: left;
+}
+.modal .content .description {
+  padding: 0 25px;
+  color: #172b4d;
+  margin: 0;
+}
+.modal .actions {
+  width: 100%;
+  display: flex;
+  margin-bottom: 15px;
+}
+.modal .actions .items {
+  padding: 0 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+}
+.modal .linkCopy {
+  position: absolute;
+  bottom: -18px;
+  margin: 0;
+  background: #d1d1d1;
+  right: -13px;
+  padding: 2px 5px;
+  border-radius: 5px;
 }/*# sourceMappingURL=modal.css.map */

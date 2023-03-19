@@ -1,0 +1,33 @@
+.addTaskContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0px 8px 10px 8px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgb(9, 30, 66, 0.25);
+    .addTaskContent {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .addNewTaskFooter {
+        display: flex;
+        gap: 5px;
+        justify-content: flex-end;
+    }
+}
+#taskTitle {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ebecf0;
+    height: 22px;
+}
+#taskContent {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ebecf0;
+    height: 50px;
+    resize: none;
+}

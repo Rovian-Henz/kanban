@@ -1,8 +1,8 @@
 import "../styles/generalButton.css";
 
-function GeneralButton({ children, handleClick }) {
+function GeneralButton({ children, handleClick, specificClass = "" }) {
     return (
-        <div className="button general" onClick={handleClick}>
+        <div className={`button ${specificClass}`} onClick={handleClick}>
             {children}
         </div>
     );

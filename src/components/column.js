@@ -9,14 +9,11 @@ function Column({ column, tasks, addNewTask }) {
     const [isNewTask, setIsNewTask] = useState(false);
 
     const TaskList = function TaskList({ tasks }) {
-        let taskList = tasks.map((task, index) => (
-            <>
-                {console.log("tasks", tasks)}
-                {tasks && task && (
-                    <Task task={task} index={index} key={task.id} />
-                )}
-            </>
-        ));
+        let taskList = tasks.map(
+            (task, index) =>
+                tasks &&
+                task && <Task task={task} index={index} key={task.id} />
+        );
         return taskList;
     };
 
@@ -26,6 +23,10 @@ function Column({ column, tasks, addNewTask }) {
 
     const handleAddTask = (newTask, columnId) => {
         addNewTask(newTask, columnId);
+        setIsNewTask(false);
+    };
+
+    const handleCancelTask = () => {
         setIsNewTask(false);
     };
 
@@ -42,13 +43,23 @@ function Column({ column, tasks, addNewTask }) {
                         {...provided.droppableProps}
                         isDraggingOver={snapshot.isDraggingOver}
                     >
-                        <TaskList tasks={tasks} />
-                        <GeneralButton handleClick={handleAddBtn}>
-                            + add new task
-                        </GeneralButton>
+                        <div className="taskList">
+                            <TaskList tasks={tasks} />
+                        </div>
+                        <div className="footerColumn">
+                            {!isNewTask && (
+                                <GeneralButton
+                                    handleClick={handleAddBtn}
+                                    specificClass="addCard"
+                                >
+                                    + Add new task
+                                </GeneralButton>
+                            )}
+                        </div>
                         {isNewTask && (
                             <NewTask
                                 handleNewTask={handleAddTask}
+                                handleCancelTask={handleCancelTask}
                                 columnClicked={
                                     provided.droppableProps[
                                         "data-rbd-droppable-id"
