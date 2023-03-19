@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { fetchData, saveData, deleteData } from "./config/dbAccess";
-import Column from "./components/column";
-import "./App.css";
+import { fetchItem, fetchData, saveData } from "../config/dbAccess";
+import Column from "../components/column";
 
-function App() {
+function Index() {
     const [tasks, setTasks] = useState();
     const [columns, setColumns] = useState();
     const [columnOrder, setColumnOrder] = useState();
@@ -21,6 +20,11 @@ function App() {
         getData("columns");
         getData("columnOrder");
     }, []);
+
+    const HandlefetchItem = () => {
+        console.log(tasks);
+        fetchItem("tasks", "3ofhlllln1iipk3am1fdz83i1w0s61r");
+    };
 
     const onAddTask = async (newTask, idColumn) => {
         const startCol = columns[idColumn];
@@ -129,29 +133,9 @@ function App() {
         return;
     };
 
-    const onDeleteTask = (taskId, column) => {
-        const newTaskIds = Array.from(column.taskIds);
-        const indexTask = newTaskIds.findIndex((item) => item === taskId);
-        if (indexTask > -1) {
-            newTaskIds.splice(indexTask, 1);
-        }
-
-        const newColumns = {
-            ...columns,
-            [column.id]: {
-                ...column,
-                taskIds: newTaskIds,
-            },
-        };
-
-        setColumns(newColumns);
-
-        deleteData(`tasks/${taskId}`);
-    };
-
     return (
         <main className="App">
-            <section className="app-container">
+            <section>
                 {tasks && columns && columnOrder && (
                     <DragDropContext onDragEnd={onDragEndf}>
                         {columnOrder.map((columnId) => {
@@ -166,15 +150,16 @@ function App() {
                                     column={column}
                                     tasks={tasksLoc}
                                     addNewTask={onAddTask}
-                                    deleteTask={onDeleteTask}
                                 ></Column>
                             );
                         })}
                     </DragDropContext>
                 )}
+
+                <button onClick={HandlefetchItem}></button>
             </section>
         </main>
     );
 }
 
-export default App;
+export default Index;

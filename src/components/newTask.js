@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { createRandomId } from "../config/utils";
 import { Close, Save } from "../icons/icons";
 import GeneralButton from "./generalButton";
@@ -7,6 +7,11 @@ import "../styles/newTask.css";
 function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
     const [nameValue, setNameValue] = useState("");
     const [contentValue, setContentValue] = useState("");
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
     const handleNameChange = (e) => {
         setNameValue(e.target.value);
@@ -33,11 +38,12 @@ function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
             <div className="addTaskContent">
                 <input
                     type="text"
+                    ref={inputRef}
                     value={nameValue}
                     onChange={handleNameChange}
                     id="taskTitle"
                     name="taskTitle"
-                    placeholder="Titulo Task"
+                    placeholder="Task Title"
                 />
                 <textarea
                     type="text"
@@ -45,21 +51,21 @@ function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
                     onChange={handleContentChange}
                     id="taskContent"
                     name="taskContent"
-                    placeholder="Descrição Task"
+                    placeholder="Task Description"
                 />
             </div>
             <div className="addNewTaskFooter">
-                <GeneralButton
-                    handleClick={handleSaveTask}
-                    specificClass="addTaskBtn"
-                >
-                    <Save />
-                </GeneralButton>
                 <GeneralButton
                     handleClick={handleCancelTask}
                     specificClass="addTaskBtn"
                 >
                     <Close />
+                </GeneralButton>
+                <GeneralButton
+                    handleClick={handleSaveTask}
+                    specificClass="addTaskBtn"
+                >
+                    <Save />
                 </GeneralButton>
             </div>
         </div>

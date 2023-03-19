@@ -3,6 +3,10 @@
     padding: 5px;
     border-radius: 5px;
     background-color: rgba(9, 30, 66, 0.04);
+    -webkit-user-select: none;
+    user-select: none;
+    appearance: none;
+    border: none;
     &.addCard {
         border-radius: 3px;
         color: #5e6c84;
@@ -17,9 +21,8 @@
     }
     &.modalBtn {
         display: flex;
-        padding: 5px 15px;
-        width: 25px;
-        height: 25px;
+        padding: 5px 8px;
+        width: 40px;
     }
     &:hover {
         background-color: rgba(9, 30, 66, 0.08);
@@ -28,8 +31,7 @@
     &.addTaskBtn {
         display: flex;
         padding: 5px 10px;
-        width: 20px;
-        height: 20px;
+        width: 40px;
         .svg-icon {
             font-size: 20px;
         }

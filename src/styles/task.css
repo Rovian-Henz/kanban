@@ -9,9 +9,15 @@
   min-height: 20px;
   position: relative;
   z-index: 0;
+  transition: background-color 0.2s ease;
+}
+.task:hover {
+  background-color: #e7e7e7;
+  transition: background-color 0.2s ease;
 }
 .task.isDragging {
-  background-color: blue;
+  background-color: #e7e7e7;
+  transition: background-color 0.2s ease;
 }
 .task .details {
   overflow: hidden;

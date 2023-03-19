@@ -5,14 +5,25 @@ import NewTask from "./newTask";
 import GeneralButton from "./generalButton";
 import "../styles/column.css";
 
-function Column({ column, tasks, addNewTask }) {
+function Column({ column, tasks, addNewTask, deleteTask }) {
     const [isNewTask, setIsNewTask] = useState(false);
+
+    const onDeleteTask = (taskId) => {
+        deleteTask(taskId, column);
+    };
 
     const TaskList = function TaskList({ tasks }) {
         let taskList = tasks.map(
             (task, index) =>
                 tasks &&
-                task && <Task task={task} index={index} key={task.id} />
+                task && (
+                    <Task
+                        task={task}
+                        index={index}
+                        key={task.id}
+                        onDeleteTask={onDeleteTask}
+                    />
+                )
         );
         return taskList;
     };
@@ -32,7 +43,6 @@ function Column({ column, tasks, addNewTask }) {
 
     return (
         <div className="column">
-            <h3 className="title">{column.title}</h3>
             <Droppable droppableId={column.id}>
                 {(provided, snapshot) => (
                     <div
@@ -43,9 +53,11 @@ function Column({ column, tasks, addNewTask }) {
                         {...provided.droppableProps}
                         isDraggingOver={snapshot.isDraggingOver}
                     >
+                        <h3 className="title">{column.title}</h3>
                         <div className="taskList">
                             <TaskList tasks={tasks} />
                         </div>
+                        {provided.placeholder}
                         <div className="footerColumn">
                             {!isNewTask && (
                                 <GeneralButton
@@ -67,7 +79,6 @@ function Column({ column, tasks, addNewTask }) {
                                 }
                             />
                         )}
-                        {provided.placeholder}
                     </div>
                 )}
             </Droppable>

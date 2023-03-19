@@ -1,4 +1,4 @@
-const fetchAddress = "http://localhost:8002";
+const fetchAddress = "http://localhost:8001";
 
 export const fetchItem = async (itemToFetch, itemId) => {
     let returnedValue = [];
@@ -58,4 +58,14 @@ export const saveData = async (itemToFetch, content, method, id = null) => {
     }
 
     return returnedValue;
+};
+
+export const deleteData = (item) => {
+    const requestOptions = {
+        method: "DELETE",
+    };
+
+    fetch(`${fetchAddress}/${item}`, requestOptions)
+        .then((res) => res.json())
+        .catch((err) => console.log("error"));
 };

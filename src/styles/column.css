@@ -23,6 +23,7 @@
 .column > .title {
   color: #172b4d;
   flex: 0 0 auto;
+  font-weight: 700;
   min-height: 20px;
   position: relative;
 }

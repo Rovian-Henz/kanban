@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import GeneralButton from "./generalButton";
 import "../styles/modal.css";
-import { Check, Share } from "../icons/icons.js";
+import { Check, Share, Trash } from "../icons/icons.js";
 import { useState, useEffect } from "react";
 
-const fetchAddress = "http://localhost:3000";
+const fetchAddress = "http://localhost:8001";
 
 const Backdrop = ({ children, onConfirm }) => {
     const handleClickBackdrop = (e) => {
@@ -18,7 +18,7 @@ const Backdrop = ({ children, onConfirm }) => {
     );
 };
 
-const ModalOverlay = ({ task, onConfirm }) => {
+const ModalOverlay = ({ task, onConfirm, onDelete }) => {
     const [copiedItem, setCopiedItem] = useState(false);
 
     useEffect(() => {
@@ -48,12 +48,17 @@ const ModalOverlay = ({ task, onConfirm }) => {
             </div>
             <footer className={"actions"}>
                 <div className="items">
-                    {console.log("copiedItem", copiedItem)}
+                    <GeneralButton
+                        handleClick={onDelete}
+                        specificClass={"modalBtn"}
+                    >
+                        <Trash />
+                    </GeneralButton>
                     <GeneralButton
                         handleClick={onShareHandle}
                         specificClass={"modalBtn"}
                     >
-                        <Share></Share>
+                        <Share />
                         {copiedItem && (
                             <span className="linkCopy">
                                 Link to card copied
@@ -64,7 +69,7 @@ const ModalOverlay = ({ task, onConfirm }) => {
                         handleClick={onConfirm}
                         specificClass={"modalBtn"}
                     >
-                        <Check></Check>
+                        <Check />
                     </GeneralButton>
                 </div>
             </footer>
@@ -72,12 +77,16 @@ const ModalOverlay = ({ task, onConfirm }) => {
     );
 };
 
-function Modal({ task, onConfirm }) {
+function Modal({ task, onConfirm, onDelete }) {
     return (
         <>
             {ReactDOM.createPortal(
                 <Backdrop onConfirm={onConfirm}>
-                    <ModalOverlay task={task} onConfirm={onConfirm} />
+                    <ModalOverlay
+                        task={task}
+                        onConfirm={onConfirm}
+                        onDelete={onDelete}
+                    />
                 </Backdrop>,
                 document.getElementById("overlay-root")
             )}

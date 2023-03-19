@@ -9,12 +9,14 @@
     min-height: 20px;
     position: relative;
     z-index: 0;
-    // border: 1px solid red;
-    // > .title {
-    //     background-color: #ddd;
-    // }
+    transition: background-color 0.2s ease;
+    &:hover {
+        background-color: #e7e7e7;
+        transition: background-color 0.2s ease;
+    }
     &.isDragging {
-        background-color: blue;
+        background-color: #e7e7e7;
+        transition: background-color 0.2s ease;
     }
     .details {
         overflow: hidden;
