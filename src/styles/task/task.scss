@@ -27,5 +27,8 @@
         flex-direction: column;
         justify-content: space-around;
         gap: 5px;
+        .content {
+            text-align: left;
+        }
     }
 }

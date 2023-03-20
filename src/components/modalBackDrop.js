@@ -4,9 +4,9 @@ function ModalBackdrop({ children, onConfirm }) {
     };
 
     return (
-        <div className={"backdrop"} onClick={handleClickBackdrop}>
+        <section className={"backdrop"} onClick={handleClickBackdrop}>
             {children}
-        </div>
+        </section>
     );
 }
 

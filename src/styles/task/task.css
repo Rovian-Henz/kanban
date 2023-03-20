@@ -28,4 +28,7 @@
   flex-direction: column;
   justify-content: space-around;
   gap: 5px;
+}
+.task .details .content {
+  text-align: left;
 }/*# sourceMappingURL=task.css.map */

@@ -16,6 +16,29 @@ html, body{
 .App {
   text-align: center;  
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 15px;  
+}
+
+.header .main-title {
+  color: #ebecf0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer .footer-title {
+  margin: 0;
+  padding: 5px 5px 15px 5px;
+  color: #ebecf0;
 }
 
 .app-container{
@@ -23,6 +46,7 @@ html, body{
   flex-direction: column;
   align-items: center;
   padding: 25px;
+  flex-basis: 100%;
 }
 .svg-icon {
   width: 1em;

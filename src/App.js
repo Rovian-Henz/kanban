@@ -208,8 +208,13 @@ function App() {
     };
 
     return (
-        <main className={`App`}>
-            <section className="app-container">
+        <section className={`App`}>
+            <header className="header">
+                <h1 className="main-title">
+                    Kanban Example - Steps to create a website
+                </h1>
+            </header>
+            <main className="app-container">
                 {tasks && columns && columnOrder && (
                     <DragDropContext onDragEnd={onDragEndf}>
                         {columnOrder.map((columnId) => {
@@ -238,8 +243,11 @@ function App() {
                         onNotificationClose={handleCloseNotification}
                     />
                 )}
-            </section>
-        </main>
+            </main>
+            <footer className="footer">
+                <h4 className="footer-title">Created by Rovian Henz</h4>
+            </footer>
+        </section>
     );
 }
 

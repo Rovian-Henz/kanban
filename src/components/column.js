@@ -42,7 +42,8 @@ function Column({ column, tasks, addNewTask, deleteTask }) {
     };
 
     return (
-        <div className="column">
+        <section className="column">
+            <h3 className="title">{column.title}</h3>
             <Droppable droppableId={column.id}>
                 {(provided, snapshot) => (
                     <div
@@ -53,7 +54,6 @@ function Column({ column, tasks, addNewTask, deleteTask }) {
                         {...provided.droppableProps}
                         isDraggingOver={snapshot.isDraggingOver}
                     >
-                        <h3 className="title">{column.title}</h3>
                         <div className="taskList">
                             <TaskList tasks={tasks} />
                             {provided.placeholder}
@@ -82,7 +82,7 @@ function Column({ column, tasks, addNewTask, deleteTask }) {
                     </div>
                 )}
             </Droppable>
-        </div>
+        </section>
     );
 }
 

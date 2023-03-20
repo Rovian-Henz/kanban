@@ -22,7 +22,7 @@ function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
     };
 
     const handleSaveTask = () => {
-        if (nameValue.length < 1 || nameValue.length < 1) return;
+        if (nameValue.length < 1) return;
 
         const taskId = createRandomId();
         const newTask = {

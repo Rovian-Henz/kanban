@@ -2,38 +2,33 @@
   "tasks": [
     {
       "id": "3lt5eeeeerd1lnp15910xnopskud6fa",
-      "title": "task1",
-      "content": "Teste 1"
+      "title": "Choose domain",
+      "content": "Research and select domain name"
     },
     {
       "id": "3nm0p7778a41smck78103eu1i1bgn6z",
-      "title": "task2",
-      "content": "Teste 2"
+      "title": "Pick hosting",
+      "content": "Choose web hosting provider"
     },
     {
       "id": "3ofhlllln1iipk3am1fdz83i1w0s61r",
-      "title": "task3",
-      "content": "Teste 3"
+      "title": "Plan structure",
+      "content": "Organize website structure and create sitemap"
     },
     {
       "id": "3q69assstir1mrtf38i8qryxpl1l3l2",
-      "title": "task4",
-      "content": "Teste 4"
+      "title": "Design layout",
+      "content": "Choose template and design layout"
     },
     {
       "id": "3pqbeeeeerd16t0dgs10f81ap5xul5a",
-      "title": "task5",
-      "content": "Teste 5"
+      "title": "Create content",
+      "content": "Write website copy and gather media"
     },
     {
       "id": "3qp53llln1i350yj5hh03cnn1h4vvad",
-      "title": "task6",
-      "content": "Teste 6"
-    },
-    {
-      "id": "3q053llln1iqsmdqhv9pgpo10fqjnj",
-      "title": "dasdasa",
-      "content": "dasdasaas"
+      "title": "Launch site",
+      "content": "Build, test, and publish website to the web"
     }
   ],
   "columns": [
@@ -41,43 +36,24 @@
       "id": "0",
       "title": "To Do",
       "taskIds": [
-        "3lt5eeeeerd1lnp15910xnopskud6fa",
-        "3nm0p7778a41smck78103eu1i1bgn6z",
-        "3ofhlllln1iipk3am1fdz83i1w0s61r",
-        "3q69assstir1mrtf38i8qryxpl1l3l2"
+        "3q69assstir1mrtf38i8qryxpl1l3l2",
+        "3pqbeeeeerd16t0dgs10f81ap5xul5a",
+        "3qp53llln1i350yj5hh03cnn1h4vvad"
       ]
     },
     {
       "id": "1",
       "title": "In Progress",
       "taskIds": [
-        "3pqbeeeeerd16t0dgs10f81ap5xul5a",
-        "3qp53llln1i350yj5hh03cnn1h4vvad",
-        "w7cn3llln1i1fkbt011aqhdint0ll1s",
-        "10iqjlllln1ix1edt0g5eamm15fz7xq",
-        "1f1kp7776h91cdsdbl1kcewbrip2t7k",
-        "30e5assstir1hk5kng1fbwjoe1trloms",
-        "3o75i4hbzck1w81561p1ey26",
-        "4naassspx04d1p8go3v53r538jte2",
-        "41nip7776h9164i1hv1a2y1xn1fwdf5y",
-        "9wkgi1b7gjdik7yt0ii1dhm",
-        "lmn7i1fsfm7p1li27j21lzohj0",
-        "1llp3llljfr1dobs5h1iv6d2f6r2tt2",
-        "2ighlllljfrpk53bqnoamdkceozgz",
-        "5q9rp777a31jrhr4e3nnssj11feey9",
-        "9x9zp777a3m4e0v3170u7w5ewf8dv",
-        "7uaweeecyicl0hax1ojhs5i1gkheee",
-        "ciw3llljfr3a15sl51xkaxerzvnqqt",
-        "2phm77776h91uv9d2n1gdyhsadjpqci",
-        "7f7sssstirs26pne1b6u86p1i3ldm3",
-        "8xjbeeeecyi1acwihyctulmd15yv261"
+        "3nm0p7778a41smck78103eu1i1bgn6z",
+        "3ofhlllln1iipk3am1fdz83i1w0s61r"
       ]
     },
     {
       "id": "2",
       "title": "Done",
       "taskIds": [
-        "gz6lassstiroao8at1nx8elv1ad4kyu"
+        "3lt5eeeeerd1lnp15910xnopskud6fa"
       ]
     }
   ],
