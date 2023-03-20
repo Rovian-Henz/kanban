@@ -35,12 +35,10 @@ function App() {
     }, [notificationRoot]);
 
     useEffect(() => {
-        if (notificationContent) {
-            const timer = setTimeout(() => {
-                handleCloseNotification();
-            }, 2500);
-            return () => clearTimeout(timer);
-        }
+        const timer = setTimeout(() => {
+            handleCloseNotification();
+        }, 2500);
+        return () => clearTimeout(timer);
     }, [notificationContent]);
 
     const onAddTask = async (newTask, idColumn) => {
