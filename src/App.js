@@ -179,9 +179,9 @@ function App() {
             taskIds: newTaskIds,
         };
 
-        saveData("columns", newColumn, "PUT", column.id);
-        //delete id from the tasks id in column
         setColumns(newColumns);
+
+        saveData("columns", newColumn, "PUT", column.id);
 
         deleteData(`tasks/${taskId}`);
     };
