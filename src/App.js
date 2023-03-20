@@ -174,6 +174,13 @@ function App() {
             },
         };
 
+        const newColumn = {
+            ...column,
+            taskIds: newTaskIds,
+        };
+
+        saveData("columns", newColumn, "PUT", column.id);
+        //delete id from the tasks id in column
         setColumns(newColumns);
 
         deleteData(`tasks/${taskId}`);
