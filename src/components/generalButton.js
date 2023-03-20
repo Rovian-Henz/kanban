@@ -1,4 +1,4 @@
-import "../styles/generalButton.css";
+import "../styles/button/generalButton.css";
 
 function GeneralButton({ children, handleClick, specificClass = "" }) {
     return (

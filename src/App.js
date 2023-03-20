@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { fetchData, saveData, deleteData } from "./config/dbAccess";
+import Notifications from "./components/notifications";
 import Column from "./components/column";
 import "./App.css";
 
@@ -8,6 +9,8 @@ function App() {
     const [tasks, setTasks] = useState();
     const [columns, setColumns] = useState();
     const [columnOrder, setColumnOrder] = useState();
+    const [notificationContent, setNotificationContent] = useState("");
+    const [notificationRoot, setNotificationRoot] = useState(false);
 
     async function getData(itemToFetch) {
         const response = await fetchData(itemToFetch);
@@ -22,7 +25,30 @@ function App() {
         getData("columnOrder");
     }, []);
 
+    useEffect(() => {
+        if (notificationRoot) {
+            handleNotificationRootChange("add");
+        }
+        if (!notificationRoot) {
+            handleNotificationRootChange("remove");
+        }
+    }, [notificationRoot]);
+
+    useEffect(() => {
+        if (notificationContent) {
+            const timer = setTimeout(() => {
+                handleCloseNotification();
+            }, 2500);
+            return () => clearTimeout(timer);
+        }
+    }, [notificationContent]);
+
     const onAddTask = async (newTask, idColumn) => {
+        handleShowNotification(
+            "success",
+            "Task Created",
+            "The selected task has been created"
+        );
         const startCol = columns[idColumn];
         const newTaskIds = Array.from(startCol.taskIds);
         newTaskIds.push(newTask.id);
@@ -130,6 +156,12 @@ function App() {
     };
 
     const onDeleteTask = (taskId, column) => {
+        handleShowNotification(
+            "error",
+            "Task Removed",
+            "The selected task has been excluded"
+        );
+
         const newTaskIds = Array.from(column.taskIds);
         const indexTask = newTaskIds.findIndex((item) => item === taskId);
         if (indexTask > -1) {
@@ -149,8 +181,36 @@ function App() {
         deleteData(`tasks/${taskId}`);
     };
 
+    const handleNotificationRootChange = (option) => {
+        if (option === "add") {
+            document
+                .querySelector("#notifications-root")
+                .classList.add("notificationOpen");
+            return;
+        }
+        if (option === "remove") {
+            document
+                .querySelector("#notifications-root")
+                .classList.remove("notificationOpen");
+            return;
+        }
+    };
+
+    const handleShowNotification = (type, title, content) => {
+        setNotificationContent({ type, title, content });
+        setNotificationRoot(true);
+    };
+
+    const handleCloseNotification = () => {
+        setNotificationRoot(false);
+        const timer2 = setTimeout(() => {
+            setNotificationContent("");
+        }, 300);
+        return () => clearTimeout(timer2);
+    };
+
     return (
-        <main className="App">
+        <main className={`App`}>
             <section className="app-container">
                 {tasks && columns && columnOrder && (
                     <DragDropContext onDragEnd={onDragEndf}>
@@ -171,6 +231,14 @@ function App() {
                             );
                         })}
                     </DragDropContext>
+                )}
+                {notificationContent && (
+                    <Notifications
+                        type={notificationContent.type}
+                        title={notificationContent.title}
+                        content={notificationContent.content}
+                        onNotificationClose={handleCloseNotification}
+                    />
                 )}
             </section>
         </main>

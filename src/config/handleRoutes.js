@@ -1,5 +1,3 @@
-//http://localhost:3000/tasks/pageeeeerdi1aehhizc90l0d49dsn6
-
 export function getCurrentURL() {
     return window.location.href;
 }

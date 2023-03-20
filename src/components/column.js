@@ -3,7 +3,7 @@ import { Droppable } from "react-beautiful-dnd";
 import Task from "./task";
 import NewTask from "./newTask";
 import GeneralButton from "./generalButton";
-import "../styles/column.css";
+import "../styles/column/column.css";
 
 function Column({ column, tasks, addNewTask, deleteTask }) {
     const [isNewTask, setIsNewTask] = useState(false);
@@ -56,8 +56,8 @@ function Column({ column, tasks, addNewTask, deleteTask }) {
                         <h3 className="title">{column.title}</h3>
                         <div className="taskList">
                             <TaskList tasks={tasks} />
+                            {provided.placeholder}
                         </div>
-                        {provided.placeholder}
                         <div className="footerColumn">
                             {!isNewTask && (
                                 <GeneralButton

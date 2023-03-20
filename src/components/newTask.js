@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { createRandomId } from "../config/utils";
 import { Close, Save } from "../icons/icons";
 import GeneralButton from "./generalButton";
-import "../styles/newTask.css";
+import "../styles/newTask/newTask.css";
 
 function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
     const [nameValue, setNameValue] = useState("");

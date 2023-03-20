@@ -1,0 +1,41 @@
+#notifications-root.notificationOpen .notification {
+    right: 15px;
+    transition: all 0.25s ease;
+}
+
+#notifications-root .notification {
+    position: fixed;
+    top: 25px;
+    right: -260px;
+    width: 175px;
+    z-index: 9;
+    background-color: #fefefe;
+    border-radius: 5px;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.25s ease;
+    &.success {
+        background-color: #198754;
+        color: #fff;
+    }
+    &.error {
+        background-color: #dc3545;
+        color: #fff;
+    }
+    &.warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+    &.info {
+        background-color: #0dcaf0;
+        color: #212529;
+    }
+    .title {
+        margin: 0;
+    }
+    .content {
+        margin: 0;
+    }
+}

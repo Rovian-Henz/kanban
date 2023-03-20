@@ -21,11 +21,6 @@ function Index() {
         getData("columnOrder");
     }, []);
 
-    const HandlefetchItem = () => {
-        console.log(tasks);
-        fetchItem("tasks", "3ofhlllln1iipk3am1fdz83i1w0s61r");
-    };
-
     const onAddTask = async (newTask, idColumn) => {
         const startCol = columns[idColumn];
         const newTaskIds = Array.from(startCol.taskIds);
@@ -155,8 +150,6 @@ function Index() {
                         })}
                     </DragDropContext>
                 )}
-
-                <button onClick={HandlefetchItem}></button>
             </section>
         </main>
     );

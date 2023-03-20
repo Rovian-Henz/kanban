@@ -1,4 +1,4 @@
-const fetchAddress = "http://localhost:8001";
+const fetchAddress = "http://localhost:3004";
 
 export const fetchItem = async (itemToFetch, itemId) => {
     let returnedValue = [];

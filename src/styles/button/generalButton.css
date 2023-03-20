@@ -40,4 +40,13 @@
 }
 .button.addTaskBtn .svg-icon {
   font-size: 20px;
+}
+.button.closeNotification {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: transparent;
+}
+.button.closeNotification .svg-icon path {
+  fill: #fefefe;
 }/*# sourceMappingURL=generalButton.css.map */

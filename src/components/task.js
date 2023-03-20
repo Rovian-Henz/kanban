@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { getCurrentPathName, setUrl } from "../config/handleRoutes";
 import Modal from "./modal";
-// import GeneralButton from "./generalButton";
-import "../styles/task.css";
+import "../styles/task/task.css";
 
 function Task({ task, index, onDeleteTask }) {
     const [isModalOpen, setIsModalOpen] = useState(false);

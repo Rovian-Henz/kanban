@@ -36,4 +36,13 @@
             font-size: 20px;
         }
     }
+    &.closeNotification {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        background-color: transparent;
+        .svg-icon path {
+            fill: #fefefe;
+        }
+    }
 }

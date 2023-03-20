@@ -29,6 +29,11 @@
       "id": "3qp53llln1i350yj5hh03cnn1h4vvad",
       "title": "task6",
       "content": "Teste 6"
+    },
+    {
+      "id": "3q053llln1iqsmdqhv9pgpo10fqjnj",
+      "title": "dasdasa",
+      "content": "dasdasaas"
     }
   ],
   "columns": [
@@ -47,13 +52,31 @@
       "title": "In Progress",
       "taskIds": [
         "3pqbeeeeerd16t0dgs10f81ap5xul5a",
-        "3qp53llln1i350yj5hh03cnn1h4vvad"
+        "3qp53llln1i350yj5hh03cnn1h4vvad",
+        "w7cn3llln1i1fkbt011aqhdint0ll1s",
+        "10iqjlllln1ix1edt0g5eamm15fz7xq",
+        "1f1kp7776h91cdsdbl1kcewbrip2t7k",
+        "30e5assstir1hk5kng1fbwjoe1trloms",
+        "3o75i4hbzck1w81561p1ey26",
+        "4naassspx04d1p8go3v53r538jte2",
+        "41nip7776h9164i1hv1a2y1xn1fwdf5y",
+        "9wkgi1b7gjdik7yt0ii1dhm",
+        "lmn7i1fsfm7p1li27j21lzohj0",
+        "1llp3llljfr1dobs5h1iv6d2f6r2tt2",
+        "2ighlllljfrpk53bqnoamdkceozgz",
+        "5q9rp777a31jrhr4e3nnssj11feey9",
+        "9x9zp777a3m4e0v3170u7w5ewf8dv",
+        "7uaweeecyicl0hax1ojhs5i1gkheee",
+        "ciw3llljfr3a15sl51xkaxerzvnqqt",
+        "2phm77776h91uv9d2n1gdyhsadjpqci"
       ]
     },
     {
       "id": "2",
       "title": "Done",
-      "taskIds": []
+      "taskIds": [
+        "gz6lassstiroao8at1nx8elv1ad4kyu"
+      ]
     }
   ],
   "columnOrder": [
