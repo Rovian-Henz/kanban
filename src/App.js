@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { ReactDOM, useState, useEffect, findDOMNode } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { fetchData, saveData, deleteData } from "./config/dbAccess";
 import Notifications from "./components/notifications";
@@ -188,15 +188,19 @@ function App() {
 
     const handleNotificationRootChange = (option) => {
         if (option === "add") {
-            document
-                .querySelector("#notifications-root")
-                .classList.add("notificationOpen");
+            if (document && document.querySelector("#notifications-root")) {
+                document
+                    .querySelector("#notifications-root")
+                    .classList.add("notificationOpen");
+            }
             return;
         }
         if (option === "remove") {
-            document
-                .querySelector("#notifications-root")
-                .classList.remove("notificationOpen");
+            if (document && document.querySelector("#notifications-root")) {
+                document
+                    .querySelector("#notifications-root")
+                    .classList.remove("notificationOpen");
+            }
             return;
         }
     };
