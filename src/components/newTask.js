@@ -17,7 +17,6 @@ function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
     };
 
     const handleSaveTask = () => {
-        console.log("taskValues", taskValues);
         if (taskValues.name.length < 1) return;
 
         const taskId = createRandomId();

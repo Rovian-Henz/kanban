@@ -1,13 +1,14 @@
-const fetchAddress = process.env.REACT_APP_BD_ADDRESS;
+const url = new URL(process.env.REACT_APP_BD_ADDRESS);
 
 export const fetchItem = async (itemToFetch, itemId) => {
     let returnedValue = [];
+    url.pathname = itemToFetch + "/" + itemId;
 
     const requestOptions = {
         method: "GET",
     };
 
-    await fetch(`${fetchAddress}/${itemToFetch}/${itemId}`, requestOptions)
+    await fetch(url, requestOptions)
         .then((res) => res.json())
         .then((data) => {
             returnedValue = data;
@@ -19,12 +20,13 @@ export const fetchItem = async (itemToFetch, itemId) => {
 
 export const fetchData = async (itemToFetch) => {
     let returnedValue = [];
+    url.pathname = itemToFetch;
 
     const requestOptions = {
         method: "GET",
     };
 
-    await fetch(`${fetchAddress}/${itemToFetch}`, requestOptions)
+    await fetch(url, requestOptions)
         .then((res) => res.json())
         .then((data) => {
             returnedValue = data;
@@ -36,6 +38,7 @@ export const fetchData = async (itemToFetch) => {
 
 export const saveData = async (itemToFetch, content, method, id = null) => {
     let returnedValue = [];
+    url.pathname = id ? itemToFetch + "/" + id : itemToFetch;
 
     const requestOptions = {
         method: method,
@@ -44,13 +47,13 @@ export const saveData = async (itemToFetch, content, method, id = null) => {
     };
 
     if (id) {
-        await fetch(`${fetchAddress}/${itemToFetch}/${id}`, requestOptions)
+        await fetch(url, requestOptions)
             .then((data) => {
                 returnedValue = data;
             })
             .catch((err) => console.log("error"));
     } else {
-        await fetch(`${fetchAddress}/${itemToFetch}`, requestOptions)
+        await fetch(url, requestOptions)
             .then((data) => {
                 returnedValue = data;
             })
@@ -61,11 +64,13 @@ export const saveData = async (itemToFetch, content, method, id = null) => {
 };
 
 export const deleteData = (item) => {
+    url.pathname = item;
+
     const requestOptions = {
         method: "DELETE",
     };
 
-    fetch(`${fetchAddress}/${item}`, requestOptions)
+    fetch(url, requestOptions)
         .then((res) => res.json())
         .catch((err) => console.log("error"));
 };
