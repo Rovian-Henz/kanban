@@ -5,30 +5,26 @@ import GeneralButton from "./generalButton";
 import "../styles/newTask/newTask.css";
 
 function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
-    const [nameValue, setNameValue] = useState("");
-    const [contentValue, setContentValue] = useState("");
+    const [taskValues, setTaskValues] = useState({ name: "", content: "" });
     const inputRef = useRef(null);
 
     useEffect(() => {
         inputRef.current.focus();
     }, []);
 
-    const handleNameChange = (e) => {
-        setNameValue(e.target.value);
-    };
-
-    const handleContentChange = (e) => {
-        setContentValue(e.target.value);
+    const handleChange = (e) => {
+        setTaskValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleSaveTask = () => {
-        if (nameValue.length < 1) return;
+        console.log("taskValues", taskValues);
+        if (taskValues.name.length < 1) return;
 
         const taskId = createRandomId();
         const newTask = {
             id: taskId,
-            title: nameValue,
-            content: contentValue,
+            title: taskValues.name,
+            content: taskValues.content,
         };
         handleNewTask(newTask, columnClicked);
     };
@@ -39,18 +35,16 @@ function NewTask({ handleNewTask, columnClicked, handleCancelTask }) {
                 <input
                     type="text"
                     ref={inputRef}
-                    value={nameValue}
-                    onChange={handleNameChange}
-                    id="taskTitle"
-                    name="taskTitle"
+                    onChange={handleChange}
+                    id="name"
+                    name="name"
                     placeholder="Task Title"
                 />
                 <textarea
                     type="text"
-                    value={contentValue}
-                    onChange={handleContentChange}
-                    id="taskContent"
-                    name="taskContent"
+                    onChange={handleChange}
+                    id="content"
+                    name="content"
                     placeholder="Task Description"
                 />
             </div>

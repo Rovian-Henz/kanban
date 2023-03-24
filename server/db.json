@@ -29,6 +29,11 @@
       "id": "3qp53llln1i350yj5hh03cnn1h4vvad",
       "title": "Launch site",
       "content": "Build, test, and publish website to the web"
+    },
+    {
+      "id": "1ia9eeeeerdxs5kvp1gl0qzp1f1va1a",
+      "title": "dasdasdasdadas",
+      "content": "dsadasadasdas"
     }
   ],
   "columns": [
@@ -46,7 +51,8 @@
       "title": "In Progress",
       "taskIds": [
         "3nm0p7778a41smck78103eu1i1bgn6z",
-        "3ofhlllln1iipk3am1fdz83i1w0s61r"
+        "3ofhlllln1iipk3am1fdz83i1w0s61r",
+        "1ia9eeeeerdxs5kvp1gl0qzp1f1va1a"
       ]
     },
     {

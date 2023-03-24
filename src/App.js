@@ -1,4 +1,4 @@
-import { ReactDOM, useState, useEffect, findDOMNode } from "react";
+import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { fetchData, saveData, deleteData } from "./config/dbAccess";
 import Notifications from "./components/notifications";
@@ -11,18 +11,26 @@ function App() {
     const [columnOrder, setColumnOrder] = useState();
     const [notificationContent, setNotificationContent] = useState("");
     const [notificationRoot, setNotificationRoot] = useState(false);
-
-    async function getData(itemToFetch) {
-        const response = await fetchData(itemToFetch);
-        if (itemToFetch === "tasks") setTasks(response);
-        if (itemToFetch === "columns") setColumns(response);
-        if (itemToFetch === "columnOrder") setColumnOrder(response);
-    }
+    // const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        let subscribed = true;
+        async function getData(itemToFetch) {
+            const response = await fetchData(itemToFetch);
+            if (subscribed) {
+                if (itemToFetch === "tasks") setTasks(response);
+                if (itemToFetch === "columns") setColumns(response);
+                if (itemToFetch === "columnOrder") setColumnOrder(response);
+            }
+        }
+
         getData("tasks");
         getData("columns");
         getData("columnOrder");
+
+        return () => {
+            subscribed = false;
+        };
     }, []);
 
     useEffect(() => {

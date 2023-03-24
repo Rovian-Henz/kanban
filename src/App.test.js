@@ -7,7 +7,7 @@ import App from "./App";
 // global.document = dom.window.document
 // global.window = dom.window
 
-describe("Main App", async () => {
+describe("Main App", () => {
     test("renders Kanban Example test", () => {
         render(<App />);
 

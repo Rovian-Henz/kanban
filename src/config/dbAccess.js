@@ -1,4 +1,4 @@
-const fetchAddress = "http://127.0.0.1:3004";
+const fetchAddress = process.env.REACT_APP_BD_ADDRESS;
 
 export const fetchItem = async (itemToFetch, itemId) => {
     let returnedValue = [];
