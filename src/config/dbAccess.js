@@ -9,7 +9,12 @@ export const fetchItem = async (itemToFetch, itemId) => {
     };
 
     await fetch(url, requestOptions)
-        .then((res) => res.json())
+        .then((res) => {
+            if (!res.ok) {
+                //handle 404, 500 and etc
+            }
+            return res.json();
+        })
         .then((data) => {
             returnedValue = data;
         })
@@ -27,7 +32,12 @@ export const fetchData = async (itemToFetch) => {
     };
 
     await fetch(url, requestOptions)
-        .then((res) => res.json())
+        .then((res) => {
+            if (!res.ok) {
+                //handle 404, 500 and etc
+            }
+            return res.json();
+        })
         .then((data) => {
             returnedValue = data;
         })
@@ -48,12 +58,24 @@ export const saveData = async (itemToFetch, content, method, id = null) => {
 
     if (id) {
         await fetch(url, requestOptions)
+            .then((res) => {
+                if (!res.ok) {
+                    //handle 404, 500 and etc
+                }
+                return res.json();
+            })
             .then((data) => {
                 returnedValue = data;
             })
             .catch((err) => console.log("error"));
     } else {
         await fetch(url, requestOptions)
+            .then((res) => {
+                if (!res.ok) {
+                    //handle 404, 500 and etc
+                }
+                return res.json();
+            })
             .then((data) => {
                 returnedValue = data;
             })
@@ -71,6 +93,11 @@ export const deleteData = (item) => {
     };
 
     fetch(url, requestOptions)
-        .then((res) => res.json())
+        .then((res) => {
+            if (!res.ok) {
+                //handle 404, 500 and etc
+            }
+            return res.json();
+        })
         .catch((err) => console.log("error"));
 };
