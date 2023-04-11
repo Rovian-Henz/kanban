@@ -11,18 +11,26 @@ function App() {
     const [columnOrder, setColumnOrder] = useState();
     const [notificationContent, setNotificationContent] = useState("");
     const [notificationRoot, setNotificationRoot] = useState(false);
-
-    async function getData(itemToFetch) {
-        const response = await fetchData(itemToFetch);
-        if (itemToFetch === "tasks") setTasks(response);
-        if (itemToFetch === "columns") setColumns(response);
-        if (itemToFetch === "columnOrder") setColumnOrder(response);
-    }
+    // const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        let subscribed = true;
+        async function getData(itemToFetch) {
+            const response = await fetchData(itemToFetch);
+            if (subscribed) {
+                if (itemToFetch === "tasks") setTasks(response);
+                if (itemToFetch === "columns") setColumns(response);
+                if (itemToFetch === "columnOrder") setColumnOrder(response);
+            }
+        }
+
         getData("tasks");
         getData("columns");
         getData("columnOrder");
+
+        return () => {
+            subscribed = false;
+        };
     }, []);
 
     useEffect(() => {
@@ -188,15 +196,19 @@ function App() {
 
     const handleNotificationRootChange = (option) => {
         if (option === "add") {
-            document
-                .querySelector("#notifications-root")
-                .classList.add("notificationOpen");
+            if (document && document.querySelector("#notifications-root")) {
+                document
+                    .querySelector("#notifications-root")
+                    .classList.add("notificationOpen");
+            }
             return;
         }
         if (option === "remove") {
-            document
-                .querySelector("#notifications-root")
-                .classList.remove("notificationOpen");
+            if (document && document.querySelector("#notifications-root")) {
+                document
+                    .querySelector("#notifications-root")
+                    .classList.remove("notificationOpen");
+            }
             return;
         }
     };
